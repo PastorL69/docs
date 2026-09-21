@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build documentation
-        run: mkdocs build --site-dir ./out
+        run: mkdocs build --strict --site-dir ./out
 
       - name: Verify structure
         run: |

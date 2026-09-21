@@ -1,6 +1,8 @@
 site_name: Pinball Power-Up Controller & DMD
-site_url: https://ppuc.github.io/docs/
+site_url: https://ppuc.org/
 site_description: Pinball Power-Up Controller & DMD (PPUC) is a free and open-source pinball controller and display system.
+site_author: PPUC
+copyright: Copyright &copy; PPUC contributors
 use_directory_urls: true
 repo_url: https://github.com/PPUC
 repo_name: PPUC on GitHub
@@ -8,7 +10,8 @@ edit_uri: docs/blob/main/docs/
 docs_dir: docs
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - github_repos:
       organization: PPUC
       cache_minutes: 30
@@ -32,10 +35,15 @@ extra_css:
 
 markdown_extensions:
   - toc:
+      permalink: true
       title: On this page
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -49,31 +57,55 @@ markdown_extensions:
 
 theme:
   name: material
-  logo: /docs/images/logo.png
+  # Relative paths. ppuc.org proxies / to https://ppuc.github.io/docs/,
+  # so a leading /docs/ prefix 404s on the custom domain.
+  logo: images/logo.png
+  favicon: images/icons/favicon.ico
   icon:
     repo: fontawesome/brands/github
     edit: fontawesome/solid/wand-magic-sparkles
   custom_dir: overrides
 
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.prune
     - navigation.tracking
     - navigation.instant
+    - navigation.instant.progress
     - navigation.footer
     - navigation.indexes
     - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
     - content.action.edit
-    - toc.follow
+    - content.action.view
+    - content.code.copy
     - content.code.annotate
+    - toc.follow
 
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: deep orange
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to system preference
   font:
     text: Open Sans
     code: Noto Sans Mono
@@ -108,3 +140,6 @@ nav:
     - ppuc_dmd/index.md
     - ppuc_dmd/when_things_dont_work.md
   - GitHub Repositories: github_repos.md
+  - Help:
+    - about/help.md
+    - about/help_docs.md

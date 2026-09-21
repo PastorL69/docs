@@ -58,85 +58,85 @@ Installation instructions
 
 ### Home
 
-![Config-Tool GUI Home](/docs/images/config_tool/GUI-Home.png)
+![Config-Tool GUI Home](../images/config_tool/GUI-Home.png)
 
-![Config-Tool GUI Home - Games](/docs/images/config_tool/GUI-Home_001.png)
+![Config-Tool GUI Home - Games](../images/config_tool/GUI-Home_001.png)
 
 ### View
 
-![enter image description here](/docs/images/config_tool/mainmenuview.png)
+![enter image description here](../images/config_tool/mainmenuview.png)
 
 Summary of the Game elements.
 
 ### Edit
 
-![enter image description here](/docs/images/config_tool/mainmenuedit.png)
+![enter image description here](../images/config_tool/mainmenuedit.png)
 
 Edit the inputs that were requested when creating the game. (Title, Description, Platform, Images, ROM, etc.)
 
 ### Export
 
-![enter image description here](/docs/images/config_tool/mainmenuexport.png)
+![enter image description here](../images/config_tool/mainmenuexport.png)
 
 **Save directly when clicking on Export.** This saves the game completely. This file can be used to create backup copies of all inputs for the currently opened game. The save is placed in the browser's download folder.
 
 ### Download Game Config
 
-![enter image description here](/docs/images/config_tool/mainmenudownloadconfig.png)
+![enter image description here](../images/config_tool/mainmenudownloadconfig.png)
 
 **Save directly when clicking on Download Game Config.** This saves the config file for use in PPUC-PinMame. The save is placed in the browser's download folder.
 
 ### Delete
 
-![enter image description here](/docs/images/config_tool/mainmenudelete.png)
+![enter image description here](../images/config_tool/mainmenudelete.png)
 
 **CAUTION:** After confirmation, **the currently opened element** will be irrevocably deleted. The currently opened element (Game, LED-Stripe, LED, PWM-Device, Board, etc.) is deleted via this button. If you are in the game interface without having selected an element, the game will be deleted. **Note when deleting a game:** Only the game configuration is deleted. All associated boards, LED-Stripes, etc. remain. These will still be available for selection in the settings. If you want to delete the elements of a game, it's best to delete the subordinate elements first!
 
 ### Revision
 
-![enter image description here](/docs/images/config_tool/mainmenurevision.png)
+![enter image description here](../images/config_tool/mainmenurevision.png)
 
 PPUC-Config Tool will make different versions of the game available in the future.
 
 ### Clone
 
-![enter image description here](/docs/images/config_tool/mainmenuclone.png)
+![enter image description here](../images/config_tool/mainmenuclone.png)
 
 Elements such as Boards, LED-Strings, LEDs, etc. can be cloned using this button. This means that the element is cloned with the last saved inputs. You can recognize this by the extended title "Clone".
 
 ## Creating a Game
 
-![enter image description here](/docs/images/config_tool/AddGame.png)
+![enter image description here](../images/config_tool/AddGame.png)
 
 A new game is created by pressing the "+ Add Game" button.
 
-![Config-Tool Create New Game](/docs/images/config_tool/create_new_game_001.png)
+![Config-Tool Create New Game](../images/config_tool/create_new_game_001.png)
 
 Now fill in the fields. Required fields are marked with asterisks (*). **Don't forget** that your game may not start if you haven't defined **Game On Solenoid** and **Coin Door Closed Switch**.
 
 Another important feature is the Platform.
 
-![Config-Tool Platform](/docs/images/config_tool/platform.png)
+![Config-Tool Platform](../images/config_tool/platform.png)
 
 The manufacturers of pinball machines developed their systems over time and designed different platforms. The characteristics of the platforms are taken into account through the appropriate selection. There is not yet a separate selection for all platforms. DE = DataEast, SYS11 and SYS4
 
 **Save the data** - You will receive confirmation that your game has been created.
 
-![Config-Tool Save](/docs/images/config_tool/save.png)
+![Config-Tool Save](../images/config_tool/save.png)
 
 You will automatically switch to the editor interface of the game.
 
 ## Adding an IO-Board
 
-![Config-Tool Add-IO-Board](/docs/images/config_tool/AddIOBoard.png)
+![Config-Tool Add-IO-Board](../images/config_tool/AddIoBoard.png)
 
-![Config-Tool Create I/O Board](/docs/images/config_tool/AddBoard.png)
+![Config-Tool Create I/O Board](../images/config_tool/AddBoard.png)
 
 - **Title:** Choose a unique title that helps you identify the board.
 - **Game:** Select the game you created earlier.
 - **Number:** Enter the number of the I/O Board that you have set on the DIP switch on the board. The number can be set from 0 to 16. It is the address that tells the board it needs to respond to the data communication.  
-![Config-Tool DIP Switch Hardware](/docs/images/config_tool/photoDipSwitches.png) 
-![Config-Tool DIP Switch Address](/docs/images/config_tool/DIPSwitchAddress.png)
+![Config-Tool DIP Switch Hardware](../images/config_tool/photoDipSwitches.png) 
+![Config-Tool DIP Switch Address](../images/config_tool/DIPSwitchAddress.png)
 - **Type:** Also select the board type here.
 - **Note:** The board, like other elements, can be assigned to multiple games. This might be important for you later when naming the board to recognize the boards.
 
@@ -167,7 +167,7 @@ After you have created a game and a board, now add the elements.
 
 ## Switch
 
-![Config-Tool Create Switch](/docs/images/config_tool/AddSwitchMenu.png)
+![Config-Tool Create Switch](../images/config_tool/AddSwitchMenu.png)
 
 - **Title:** Choose a unique title that helps you identify the board.
 - **Number:** This number is received by PinMame from the board and evaluated in the simulated ROM. This means that the number must be the same number that is used in the ROM. You can find this number in the manual of the pinball machine.
@@ -186,20 +186,20 @@ After you have created a game and a board, now add the elements.
 
 This controls WS2811, WS2812, and other addressable LEDs, also RGBW like SK6812. It doesn't have to be a chain. It can also be strips, or individual LEDs that are connected to each other in another way. The principle of these LEDs, however, is to form a continuous chain, in which the data line only goes in one direction and only as one strand, never in a circle. For control, data is sent to the corresponding LED. This data packet passes by all connected LEDs. Only the LED with the corresponding number responds.
 
-![enter image description here](/docs/images/config_tool/AddLEDStringMenu.png)
+![enter image description here](../images/config_tool/AddLEDStringMenu.png)
 **Title:** Choose a unique title that helps you identify the light chain. **I/O Board:** The I/O board to which the LED chain is connected. **Port:** Port number of the board to which the LED chain is connected. For the I/O Boards 16-8-1, this is port 25. See the labeling on the board:
-![enter image description here](/docs/images/config_tool/LED-Connector_low.png)
+![enter image description here](../images/config_tool/LED-Connector_low.png)
 **LED Type:** Here the color type is specified. Whether RGB, GBR, BRG, RGBW, and so on... The transferred color values are put into the right order with this. **Amount of LEDs:** Number of LEDs in the chain.
 
 ### Segments
 
-![enter image description here](/docs/images/config_tool/AddLEDStringSegments.png)
+![enter image description here](../images/config_tool/AddLEDStringSegments.png)
 
 The light chain can be divided into segments. This serves to apply animated light effects to certain sections of the chain. These effects are predefined and stored in the firmware of the boards and can be triggered. **From** - **to** defines the position of the first and last LED of the respective section in the chain.
 
 ### Light
 
-![enter image description here](/docs/images/config_tool/AddLEDStringLight.png)
+![enter image description here](../images/config_tool/AddLEDStringLight.png)
 
 - **After Glow (Milliseconds):** The brightness of the LED is faded out and not switched off abruptly. This simulates the behavior of the incandescent lamps of the old devices.
 - **Light Up (Milliseconds):** The brightness of the LED is faded in and not switched on abruptly. This simulates the behavior of the incandescent lamps of the old devices.
@@ -209,7 +209,7 @@ The light chain can be divided into segments. This serves to apply animated ligh
 
 Add LEDs to your LED chain. You can create each LED individually, or use the Clone function to adopt parameters.
 
-![enter image description here](/docs/images/config_tool/AddAdressableLed.png)
+![enter image description here](../images/config_tool/AddAdressableLed.png)
 
 - **Title:** Choose a unique title that helps you identify the lamp.
 - **Role:** Here you select the type of imitated lamp of the pinball machine. There are Lamp, Flasher (5V), GI. See the description of the lamp types a bit further down.
@@ -236,16 +236,16 @@ PWM Device refers to the electromagnets or other pinball hardware (usually insta
 
 Pulse Width Modulation (PWM) is a technique where the output voltage is regulated by rapidly switching the current flow on and off and varying the on-time (pulse width). A longer on-pulse results in a higher average output voltage, while a shorter pulse creates a lower voltage. This method allows efficient and precise control of power output. PWM is also used to keep the output voltage stable, even if the load changes. In addition, it allows the control of LED brightness, motor speed, and power output to many other electronic devices.
 
-![enter image description here](/docs/images/config_tool/AddPWMMenu1.png)
+![enter image description here](../images/config_tool/AddPWMMenu1.png)
 
 - **Title:** Choose a unique title that helps you identify the PWM-Device.
 - **Type:** Since there are different types of controllable hardware with higher voltage, select the corresponding type here.
 - **Number:** This number is received by the board from PinMame from the simulated ROM. This means that the number must be the same number that is also used in the ROM to control this hardware. You can find this number in the manual of the pinball machine.
 - **I/O Board:** The I/O board to which the LED chain is connected.
-- **Port:** The number of the output to which the hardware to be addressed is connected. Example I/O-Board 16-1-1: ![enter image description here](/docs/images/config_tool/PWM-Connector_low.png)
+- **Port:** The number of the output to which the hardware to be addressed is connected. Example I/O-Board 16-1-1: ![enter image description here](../images/config_tool/PWM-Connector_low.png)
 
 
-![enter image description here](/docs/images/config_tool/AddPWMMenu2.png)
+![enter image description here](../images/config_tool/AddPWMMenu2.png)
 
 - **Power (0-255):** 0 = 0 Volt. 255 = full power supply performance (pay attention to the max allowed voltage). Values between 0 and 255 reduce the power supply voltage.
 - **Note:** The power supply voltage does not reduce linearly! You must measure the voltage corresponding to the value before using it.
@@ -267,18 +267,18 @@ Warning: simply copying these examples can damage the hardware!
 ## View
 Here you'll always have an overview of all elements added to the game. You can also edit them directly by clicking Edit.
 
-![enter image description here](/docs/images/config_tool/view.png)
+![enter image description here](../images/config_tool/view.png)
 
 
 ## Config File Export
 
-![enter image description here](/docs/images/config_tool/mainmenudownloadconfig.png)
+![enter image description here](../images/config_tool/mainmenudownloadconfig.png)
 
 This button in the side header of a selected game saves the complete information that has been added to the game. The file name is generated from the Game Title. The file is written in plain text in YAML format. You use this file with PPUC-Pinmame. With this, the PPUC part in PinMame learns the structure of the board configuration. You can create different configurations and use them in PPUC-Pinmame.
 
 ## Save Configuration Completely
 
-![enter image description here](/docs/images/config_tool/mainmenuexport.png)
+![enter image description here](../images/config_tool/mainmenuexport.png)
 
 This button in the side header of a selected game saves the complete information that has been added to the game. The file name is strangely long, but this makes it unique and machine-readable. You should regularly create a backup using this button. After triggering the button, the file is immediately saved to the browser's download folder. This file can be loaded later (Game Import) or passed on. The file is not saved in plain text and includes ROM and image files.
 

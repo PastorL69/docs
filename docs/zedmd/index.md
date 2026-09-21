@@ -229,7 +229,7 @@ ZeDMD uses
 - [Bounce2](https://github.com/thomasfredericks/Bounce2)
 - [miniz](https://github.com/richgel999/miniz)
 - [Tiny 4x6 Pixel Font](https://hackaday.io/project/6309-vga-graphics-over-spi-and-serial-vgatonic/log/20759-a-tiny-4x6-pixel-font-that-will-fit-on-almost-any-microcontroller-license-mit)
-- [ESPAsyncWebServer]([https://github.com/me-no-dev/ESPAsyncWebServer](https://github.com/ESP32Async/ESPAsyncWebServer))
+- [ESPAsyncWebServer](https://github.com/ESP32Async/ESPAsyncWebServer)
 - [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI)
 - [RM67162 with fixes from Nikthefix](https://github.com/Xinyuan-LilyGO/T-Display-S3-AMOLED/issues/2)
 - [pioarduino](https://github.com/pioarduino)

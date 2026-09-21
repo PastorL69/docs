@@ -1,11 +1,70 @@
 # PPUC, PPUC/DMD and ZeDMD
 [![Discord](https://img.shields.io/discord/759478464733642814.svg?logo=discord&logoColor=white&color=5865F2&label=Discord)](https://discord.gg/fkkk4MbBn5)
 
+<div class="ppuc-hero" markdown>
+
 The Pinball Power-Up Controller software and hardware family is designed to enhance the capabilities of classic pinball
 machines, mainly of the late 70s, 80s, 90s, up to the early 2000s, to repair broken machines and to drive the hardware of home brew pinball machines.
 
+[Get started :material-rocket-launch:](ppuc/getting_started.md){ .md-button .md-button--primary }
+[Browse the hardware :material-developer-board:](ppuc_hardware/index.md){ .md-button }
+[Chat with us :fontawesome-brands-discord:](https://discord.gg/fkkk4MbBn5){ .md-button }
+
+</div>
+
+<div class="grid cards" markdown>
+
+- :material-rocket-launch:{ .lg .middle } __PPUC__
+
+    ---
+
+    Run a machine, replace a broken CPU, or drive a homebrew playfield.
+
+    [:octicons-arrow-right-24: Getting started](ppuc/getting_started.md)
+
+- :material-developer-board:{ .lg .middle } __Hardware__
+
+    ---
+
+    IO boards, wiring, power, and how many PCBs your project needs.
+
+    [:octicons-arrow-right-24: Boards and wiring](ppuc_hardware/index.md)
+
+- :material-monitor:{ .lg .middle } __ZeDMD__
+
+    ---
+
+    A real DMD for virtual pinball machines and other emulators.
+
+    [:octicons-arrow-right-24: ZeDMD](zedmd/index.md)
+
+- :material-palette:{ .lg .middle } __PPUC/DMD__
+
+    ---
+
+    Serum colorizations on a real machine, rendered by ZeDMD.
+
+    [:octicons-arrow-right-24: Colorizations](ppuc_dmd/index.md)
+
+- :fontawesome-brands-github:{ .lg .middle } __Repositories__
+
+    ---
+
+    Source code, firmware, and the latest releases on GitHub.
+
+    [:octicons-arrow-right-24: All projects](github_repos.md)
+
+- :fontawesome-brands-discord:{ .lg .middle } __Discord__
+
+    ---
+
+    Ask questions, share your build, and get help from the community.
+
+    [:octicons-arrow-right-24: Join the chat](https://discord.gg/fkkk4MbBn5)
+
+</div>
+
 [![Watch the video](https://img.youtube.com/vi/-LGO8dxLg2c/hqdefault.jpg)](https://youtu.be/-LGO8dxLg2c)
-*Click the image to watch the video on YouTube.*
 
 Meanwhile the PPUC family has grown and the hard and software covers various use-cases, like modding a pinball machine,
 repairing a pinball machine or to drive homebrew pinball machines.
@@ -23,14 +82,13 @@ communicating with the controllers. The target is to use the VPX Standalone scri
 
 A special variation of that "CPU" is suitable as replacement for a broken CPU of an existing machine.
 That development started as part of the [PinMAME project](https://github.com/vpinball/pinmame/tree/master/src/ppuc).
-Nowadays it is a standalone programm that leverages libpinmame: (https://github.com/PPUC/ppuc)
+Nowadays it is a standalone program that leverages [libpinmame](https://github.com/PPUC/ppuc).
 
 As a sub-project ZeDMD has been created to emulate a real DMD for virtual pinball machines. To be used with as
 replacement in real machines, the concept got extended by some parts to read the original DMD signal and to apply Serum colorizations to it.
 The name for this solution is _PPUC/DMD_.
 
 [![Watch the video](https://img.youtube.com/vi/U_8ic-G24y4/hqdefault.jpg)](https://youtu.be/U_8ic-G24y4)
-*Click the image to watch the video on YouTube.*
 
 To get involved in the development or to discuss your PPUC project, join us on [Discord](https://discord.gg/fkkk4MbBn5).
 
@@ -61,7 +119,6 @@ non-blocking way.
 [![Watch the video](https://img.youtube.com/vi/L5reBPVoL4c/default.jpg)](https://youtu.be/L5reBPVoL4c)
 [![Watch the video](https://img.youtube.com/vi/4dq9ez786GY/default.jpg)](https://youtu.be/4dq9ez786GY)
 [![Watch the video](https://img.youtube.com/vi/aY2foJ0kw9o/default.jpg)](https://youtu.be/aY2foJ0kw9o)
-*Click the images to watch the videos on YouTube.*
 
 ### Homebrew machines or Replacing a CPU (and drivers)
 
@@ -83,7 +140,6 @@ In case of replacing a broken CPU and driver boards, the platform independent
 and leverages libpinmame to emulate the ROM.
 
 [![Watch the video](https://img.youtube.com/vi/BKefBGnp9Js/hqdefault.jpg)](https://youtu.be/BKefBGnp9Js)
-*Click the image to watch the video on YouTube.*
 
 It you replace the entire electronics and wiring of an existing machine, a
 [web-based configuration tool](https://github.com/PPUC/config-tool) could be used to configure your setup.
@@ -93,7 +149,6 @@ Our plan is to create a special version of VPX Standalone (VPX for Linux, macOS,
 You would have all capabilities like PUP Packs, FlexDMD, etc.
 
 [![Watch the video](https://img.youtube.com/vi/MTMMOd1anZY/hqdefault.jpg)](https://youtu.be/MTMMOd1anZY)
-*Click the image to watch the video on YouTube.*
 
 ![Overview pic](images/hardware/overview.png)
 
@@ -108,10 +163,9 @@ We would appreciate contributions to PPUC itself or as game-specific PPUs.
 ## ZeDMD
 
 ZeDMD is a "real" DMD for pinball emulations and other use cases, developed as part of the PPUC project.
-For more details, visit the [ZeDMD page](https://github.com/PPUC/ZeDMD).
+For more details, visit the [ZeDMD page](zedmd/index.md).
 
 [![Watch the video](https://img.youtube.com/vi/B6D00oB4Co8/hqdefault.jpg)](https://youtu.be/B6D00oB4Co8)
-*Click the image to watch the video on YouTube.*
 
 ## PPUC/DMD
 
@@ -119,7 +173,6 @@ PPUC/DMD is a replacement DMD for real pinball machines that is able to aply Ser
 It uses a ZeDMD for rendering.
 
 [![Watch the video](https://img.youtube.com/vi/snzCKHoTCRY/hqdefault.jpg)](https://youtu.be/snzCKHoTCRY)
-*Click the image to watch the video on YouTube.*
 
 ## Other components of the PPUC project
 
