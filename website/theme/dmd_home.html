@@ -3,8 +3,19 @@
 {% block body_class %}dmd dmd-home{% endblock %}
 
 {% block content %}
+{#- The first screen: the display photo with the intro, and the specifications right below it. #}
+<div class="first-screen">
 <section class="hero">
   <div class="wrap hero-inner">
+    {#- The same photo with the display off (base layer) and three different frames on it; only the dots
+        differ, so a crossfade looks like the display itself switching. On arrival the display powers on
+        (PPUC/DMD fades in over the dark panel), then rotates: PPUC/DMD, ZeDMD, RetroDMD. #}
+    <div class="hero-photo" role="img" aria-label="A PPUC/DMD display showing the PPUC/DMD, ZeDMD and RetroDMD logos in turn">
+      <img class="hero-off" src="{{ 'assets/img/hero/off.webp' | url }}" alt="" width="1600" height="540" fetchpriority="high">
+      <img class="is-active" src="{{ 'assets/img/hero/ppucdmd.webp' | url }}" alt="" width="1600" height="540" fetchpriority="high">
+      <img src="{{ 'assets/img/hero/zedmd.webp' | url }}" alt="" width="1600" height="540">
+      <img src="{{ 'assets/img/hero/retrodmd.webp' | url }}" alt="" width="1600" height="540">
+    </div>
     <h1 class="hero-tagline">{{ page.meta.tagline }}</h1>
     <div class="hero-lead">{{ page.content }}</div>
     <div class="hero-actions">
@@ -14,8 +25,54 @@
   </div>
 </section>
 
-<section class="section" id="variants" aria-labelledby="variants-title">
+<section class="section section--alt section--specs" aria-labelledby="specs-title">
   <div class="wrap">
+    <h2 id="specs-title" class="spec-heading"><span>{{ page.meta.specs_title }}</span></h2>
+    <ul class="specs">
+      {%- for spec in page.meta.specs %}
+      <li class="spec {{ 'spec--list' if spec.list else 'spec--block' }}">
+        <span class="spec-art{% if spec.art %} spec-art--{{ spec.art }}{% endif %}" aria-hidden="true">
+          {%- if spec.image %}<img src="{{ spec.image | url }}" alt="" width="160" height="160">
+          {%- endif -%}
+        </span>
+        <div class="spec-body">
+          <p class="spec-stat">{{ spec.stat }}{% if spec.unit %}<small>{{ spec.unit }}</small>{% endif %}</p>
+          {%- if spec.note %}
+          <p class="spec-note">{{ spec.note }}</p>
+          {%- endif %}
+          {%- if spec.text %}
+          <p class="spec-text">{{ spec.text }}</p>
+          {%- endif %}
+        </div>
+        {%- if spec.list %}
+        {%- if spec.title %}
+        <h3>{{ spec.title }}</h3>
+        {%- endif %}
+        <ul class="spec-tags">
+          {%- for item in spec.list %}
+          {%- if item is mapping %}<li class="is-soon">{{ item.name }}{% if item.soon %} <small>Coming soon</small>{% endif %}</li>
+          {%- else %}<li>{{ item }}</li>{% endif %}
+          {%- endfor %}
+        </ul>
+        {%- if spec.virtual %}
+        <div class="spec-group">
+          <ul class="spec-tags spec-tags--virtual">
+            {%- for item in spec.virtual %}<li>{{ item }}</li>{% endfor %}
+          </ul>
+        </div>
+        {%- endif %}
+        {%- endif %}
+      </li>
+      {%- endfor %}
+  </div>
+</section>
+  <a class="scroll-cue" href="#lineup" aria-label="Scroll to the PPUC/DMD line-up">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</div>
+
+<section class="section" id="variants" aria-labelledby="variants-title">
+  <div class="wrap" id="lineup">
     <p class="kicker">The line-up</p>
     <h2 id="variants-title" class="section-title">Four resolutions, one platform</h2>
     <div class="variant-grid">
@@ -49,36 +106,12 @@
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="how-title">
-  <div class="wrap">
-    <p class="kicker">How it works</p>
-    <h2 id="how-title" class="section-title">From monochrome to full colour</h2>
-    <ol class="flow">
-      <li>
-        <span class="flow-step">01</span>
-        <h3>Read</h3>
-        <p>PPUC/DMD taps the original display signal of your machine. No changes to the game ROM.</p>
-      </li>
-      <li>
-        <span class="flow-step">02</span>
-        <h3>Colorize</h3>
-        <p>Every frame is matched against a Serum v1 or v2 colorization and coloured in real time.</p>
-      </li>
-      <li>
-        <span class="flow-step">03</span>
-        <h3>Display</h3>
-        <p>A ZeDMD drives bright RGB LED panels that replace the original dot matrix display.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="video-title">
+<section class="section section--alt" aria-labelledby="video-title">
   <div class="wrap split">
     <div>
       <p class="kicker">See it in action</p>
       <h2 id="video-title" class="section-title">Did you know?</h2>
-      <p class="muted">PPUC/DMD grew out of ZeDMD, the popular high-speed DMD for virtual pinball machines. In late 2024 the ZeDMD project was handed over to Markus Kalkbrenner, who turned it into a versatile solution, and serving as a key building block of PPUC/DMD.</p>
+      <p class="muted">PPUC/DMD grew out of ZeDMD, the popular high-speed DMD for virtual pinball machines. In late 2024, with the full permission of its creator David "Zedrummer" Lafarge, the ZeDMD project was handed over to Markus Kalkbrenner, who turned it into a versatile solution that serves as a key building block of PPUC/DMD.</p>
       <div class="hero-actions hero-actions--left">
         <a class="btn" href="{{ 'docs/ppuc_dmd/' | url }}">Read the documentation</a>
         <a class="btn btn--ghost" href="{{ config.extra.discord }}">Join the Discord</a>
@@ -94,4 +127,5 @@
 
 {% block scripts %}
 <script src="{{ 'assets/js/dmd-matrix.js' | url }}" defer></script>
+<script src="{{ 'assets/js/hero-photo.js' | url }}" defer></script>
 {% endblock %}

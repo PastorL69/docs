@@ -1,0 +1,315 @@
+/* ppuc.org landing page: PPUC (the umbrella project, yellow/black like the docs) and its featured product
+   PPUC/DMD (teal neon). Only the buttons and links are clickable, not the halves themselves. */
+
+:root {
+  --ppuc-yellow: #ffff00;
+  --ppuc-yellow-bg: #f0ee00;   /* slightly toned-down yellow for the large landing area */
+  --ppuc-red: #d63e29;
+  --ink: #000;
+  --dmd-bg: #051115;
+  --dmd-cyan: #3ee8ff;
+  --dmd-yellow: #ffe31a;
+  --dmd-text: #d3e8ed;
+  --dmd-muted: #8eacb3;
+  --hex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%2350e1ff' stroke-opacity='0.12' stroke-width='0.45'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--dmd-bg);
+  font: 400 16px/1.6 "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; }
+
+:focus-visible { outline: 3px solid var(--ppuc-red); outline-offset: -6px; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.split-landing {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.door {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* PPUC covers more ground than PPUC/DMD, so its half is wider. */
+@media (min-width: 801px) {
+  .door--ppuc { flex-grow: 58; }
+  .door--dmd { flex-grow: 42; }
+}
+
+.door-title, .door-banner-wrap, .door-sub, .door-text { margin: 0; }
+
+.door-bg { position: absolute; inset: 0; pointer-events: none; }
+
+.door-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 640px;
+  padding: 56px 32px 88px;
+  text-align: center;
+}
+
+.door-sub { text-transform: uppercase; }
+.door-text { max-width: 38ch; }
+
+.door-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 14px 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.door-cta:hover, .door-cta:focus-visible { transform: translateY(-2px); }
+.door a:focus-visible { outline-offset: 3px; }
+
+/* Extras below each button (PPUC topics, ZeDMD). On desktop they hang below the content instead of being
+   part of it, so the centred rows (logo, heading, text, button) stay level on both halves.
+   88px = the content's bottom padding. */
+.door-extra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+@media (min-width: 801px) {
+  .door-extra { position: absolute; left: 0; right: 0; top: calc(100% - 88px); }
+}
+.door-extra-label { text-transform: uppercase; }
+
+/* ---------- PPUC Docs side ---------- */
+
+.door--ppuc { background: var(--ppuc-yellow-bg); color: var(--ink); }
+
+.door--ppuc .door-bg {
+  background: url("../img/traces.svg") 0 0 / 480px 480px;   /* circuit-board traces, seamless 480px tile */
+}
+
+.door-logo { width: 140px; height: 140px; }
+
+.door-title {
+  font: 700 clamp(3rem, 6vw, 5.2rem)/1 "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+/* "PPUC [icon] DOCS" on one line, like "PPUC [icon] DMD" in the PPUC/DMD banner. */
+.door-title { display: flex; align-items: center; justify-content: center; gap: 20px; font-size: clamp(56px, 5.6vw, 81px); letter-spacing: 0.03em; }
+.door-word { font-weight: 400; }
+.door-word--bold { font-weight: 700; }
+
+.door--ppuc .door-sub {
+  font: 600 1.05rem/1.3 "Oswald", sans-serif;
+  letter-spacing: 0.22em;
+}
+.door--ppuc .door-text { max-width: 44ch; color: rgba(0, 0, 0, 0.78); }
+
+.door--ppuc .door-cta {
+  font: 600 1rem/1 "Oswald", sans-serif;
+  letter-spacing: 0.12em;
+  color: var(--ppuc-yellow);
+  background: var(--ink);
+  border-radius: 3px;
+}
+.door--ppuc .door-cta:hover, .door--ppuc .door-cta:focus-visible { background: var(--ppuc-red); color: #fff; }
+
+/* Topic links into the docs */
+.door-topics .door-extra-label {
+  font: 600 0.8rem/1.3 "Oswald", sans-serif;
+  letter-spacing: 0.22em;
+  color: rgba(0, 0, 0, 0.6);
+}
+.door-topics ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.door-topics a {
+  display: block;
+  padding: 7px 14px;
+  font: 600 0.85rem/1.2 "Oswald", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1.5px solid rgba(0, 0, 0, 0.55);
+  border-radius: 3px;
+  background: rgba(240, 238, 0, 0.75);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.door-topics a:hover, .door-topics a:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--ppuc-yellow); }
+
+/* ---------- PPUC/DMD side ---------- */
+
+.door--dmd { background: var(--dmd-bg); color: var(--dmd-text); }
+
+.door--dmd .door-bg {
+  background: var(--hex) 0 0 / 168px 300px;
+}
+
+.door--dmd .door-content { max-width: 720px; padding-left: 20px; padding-right: 20px; }
+/* Both logo rows are exactly as tall as the PPUC Docs icon (140px, 96px on phones), with each logo centred
+   inside, so the headings, text and buttons below start at the same height on both halves at any width.
+   The banner may overflow that box a little: its top and bottom edges are faded and empty. */
+.door-banner-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 677px;
+  max-width: 100%;
+  height: 140px;
+}
+.door-title { height: 140px; }
+.door-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 9%, #000 91%, transparent);
+  mask-composite: intersect;
+}
+
+.door--dmd .door-sub {
+  font: 700 0.85rem/1.3 "Orbitron", sans-serif;
+  letter-spacing: 0.22em;
+  color: var(--dmd-cyan);
+  text-shadow: 0 0 12px rgba(62, 232, 255, 0.55);
+}
+.door--dmd .door-text { color: var(--dmd-muted); }
+
+.door--dmd .door-cta {
+  font: 700 0.85rem/1 "Orbitron", sans-serif;
+  letter-spacing: 0.14em;
+  color: #000;
+  background: var(--dmd-yellow);
+  border-radius: 999px;
+  box-shadow: 0 0 24px rgba(255, 227, 26, 0.45);
+}
+.door--dmd .door-cta:hover, .door--dmd .door-cta:focus-visible { box-shadow: 0 0 40px rgba(255, 227, 26, 0.7); }
+.door--dmd a:focus-visible { outline-color: var(--dmd-cyan); }
+
+/* ZeDMD: the PPUC/DMD display for virtual pinball, shown as a small panel at its native 256x64 resolution. */
+.door-zedmd .door-extra-label {
+  font: 700 0.7rem/1.3 "Orbitron", sans-serif;
+  letter-spacing: 0.2em;
+  color: var(--dmd-muted);
+}
+.door-zedmd a { display: block; border-radius: 8px; }
+.door-zedmd img {
+  display: block;
+  width: 256px;
+  height: 64px;
+  image-rendering: pixelated;
+  padding: 6px;
+  box-sizing: content-box;
+  background: #000;
+  border: 1px solid rgba(80, 225, 255, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(160, 120, 255, 0.18);
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.door-zedmd a:hover img, .door-zedmd a:focus-visible img { border-color: rgba(80, 225, 255, 0.45); box-shadow: 0 0 32px rgba(160, 120, 255, 0.35); }
+
+/* ---------- Community links, centred on the seam (58% from the left) ---------- */
+
+.landing-links {
+  position: absolute;
+  left: 58%;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+.landing-links a {
+  padding: 7px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.landing-links a:hover { background: #000; border-color: rgba(255, 255, 255, 0.4); }
+.landing-links a:focus-visible { outline-offset: 2px; }
+
+@media (max-width: 800px) {
+  .split-landing { flex-direction: column; }
+  .door { flex: 1 0 auto; min-height: 50svh; }
+  .door-content { padding: 44px 16px 48px; gap: 12px; }
+  .door-logo { width: 96px; height: 96px; }
+  .door-title { gap: 12px; font-size: 40px; height: 96px; }
+  .door-banner-wrap { height: 96px; }
+  /* Phones: the banner runs edge to edge to keep its icon as large as possible. */
+  .door--dmd .door-content { padding-left: 16px; padding-right: 16px; }
+  .door-banner-wrap { width: calc(100% + 32px); max-width: none; margin-left: -16px; margin-right: -16px; }
+  .landing-links {
+    position: static;
+    justify-content: center;
+    padding: 20px 16px 28px;
+    transform: none;
+    background: var(--dmd-bg);
+    border-top: 1px solid rgba(80, 225, 255, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* ---------- 404 ---------- */
+
+.notfound {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px 16px;
+  background:
+    repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.035) 0 2px, transparent 2px 16px),
+    var(--ppuc-yellow);
+  color: var(--ink);
+  text-align: center;
+}
+.notfound h1 { margin: 16px 0 8px; font: 700 clamp(2rem, 6vw, 3.2rem)/1.1 "Oswald", sans-serif; text-transform: uppercase; }
+.notfound p { margin: 0 0 8px; }
+.notfound-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px !important; }
+.notfound-links a {
+  padding: 12px 22px;
+  font: 600 0.95rem/1 "Oswald", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ppuc-yellow);
+  background: var(--ink);
+  border-radius: 3px;
+  text-decoration: none;
+}
+.notfound-links a:hover { background: var(--ppuc-red); color: #fff; }

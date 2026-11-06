@@ -21,40 +21,61 @@
   <link rel="stylesheet" href="{{ 'assets/css/landing.css' | url }}">
 </head>
 <body>
-  <h1 class="visually-hidden">PPUC: choose where to go</h1>
-  <main class="split-landing">
-    <a class="door door--ppuc" href="{{ 'docs/' | url }}">
-      <span class="door-bg" aria-hidden="true"></span>
-      <span class="door-content">
-        <span class="door-title">
-          <span class="door-word door-word--bold">PPUC</span>
-          <img class="door-logo" src="{{ 'assets/img/ppuc-mark.png' | url }}" alt="" width="140" height="140">
-          <span class="door-word">Docs</span>
-        </span>
-        <span class="door-sub">Pinball Power-Up Controller</span>
-        <span class="door-text">Open-source controllers, I/O boards and software to mod, repair and build pinball machines.</span>
-        <span class="door-cta">Read the docs <span aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
+  {#- Hub layout: PPUC (the umbrella project) fills the main area; PPUC/DMD, its featured product, is a band
+      along the bottom of the first screen. Only buttons and links are clickable. #}
+  <main class="hub">
+    <section class="hub-ppuc" aria-labelledby="hub-ppuc-title">
+      <div class="hub-ppuc-bg" aria-hidden="true"></div>
+      <nav class="hub-community" aria-label="Community">
+        <a href="{{ config.extra.github }}">GitHub</a>
+        <a href="{{ config.extra.discord }}">Discord</a>
+      </nav>
+      <div class="hub-ppuc-inner">
+        <h1 class="hub-title" id="hub-ppuc-title">
+          <img class="hub-logo" src="{{ 'assets/img/ppuc-mark.png' | url }}" alt="" width="140" height="140">
+          <span class="hub-word">PPUC</span>
+        </h1>
+        <p class="hub-sub">Pinball Power-Up Controller</p>
+        <p class="hub-text">The PPUC family: controllers, I/O boards, displays and software to mod, repair and build pinball machines.</p>
+        <a class="hub-cta" href="{{ 'docs/' | url }}">Read the docs <span aria-hidden="true">&rarr;</span></a>
+        <nav class="hub-topics" aria-label="Documentation topics">
+          <span class="hub-topics-label">Jump to</span>
+          <ul>
+            <li><a href="{{ 'docs/ppuc/' | url }}">Controllers</a></li>
+            <li><a href="{{ 'docs/ppuc_hardware/' | url }}">I/O boards</a></li>
+            <li><a href="{{ 'docs/ppuc_dmd/' | url }}">PPUC/DMD</a></li>
+            <li><a href="{{ 'docs/zedmd/' | url }}">ZeDMD</a></li>
+            <li><a href="{{ 'docs/github_repos/' | url }}">Repositories</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
 
-    <a class="door door--dmd" href="{{ 'dmd/' | url }}">
-      <span class="door-bg" aria-hidden="true"></span>
-      <span class="door-content">
-        <span class="door-banner-wrap">
-          <img class="door-banner" src="{{ 'assets/img/ppuc-dmd-banner-1200.jpg' | url }}"
-               srcset="{{ 'assets/img/ppuc-dmd-banner-1200.jpg' | url }} 1200w, {{ 'assets/img/ppuc-dmd-banner.jpg' | url }} 2064w"
-               sizes="(max-width: 800px) 100vw, 680px" alt="PPUC/DMD" width="1200" height="298">
-        </span>
-        <span class="door-sub">Full-colour replacement DMD</span>
-        <span class="door-text">Run Serum colorizations in the best way possible on your virtual or real pinball machine.</span>
-        <span class="door-cta">Go to PPUC/DMD <span aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>
+    <section class="hub-dmd" aria-labelledby="hub-dmd-title">
+      <div class="hub-dmd-bg" aria-hidden="true"></div>
+      <div class="hub-dmd-inner">
+        {#- Two matching 256x64 "display panels": PPUC/DMD (left) and ZeDMD (right), with the text in between. #}
+        <div class="hub-panel hub-panel--ppucdmd">
+          <p class="hub-panel-label">For real pinball as</p>
+          <h2 class="hub-panel-title" id="hub-dmd-title">
+            <a href="{{ 'dmd/' | url }}">
+              <img src="{{ 'assets/img/ppuc-dmd-banner-1200.jpg' | url }}" alt="PPUC/DMD" width="256" height="64">
+            </a>
+          </h2>
+        </div>
+        <div class="hub-dmd-body">
+          <p class="hub-dmd-sub">Full-colour replacement DMD</p>
+          <p class="hub-dmd-text">Run Serum colorizations in the best way possible on your real or virtual pinball machine.</p>
+          <a class="hub-dmd-cta" href="{{ 'dmd/' | url }}">Go to PPUC/DMD <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="hub-panel hub-panel--zedmd">
+          <p class="hub-panel-label">For virtual pinball as</p>
+          <a href="{{ 'docs/zedmd/' | url }}" aria-label="ZeDMD documentation">
+            <img src="{{ 'assets/img/zedmd-logo.png' | url }}" alt="ZeDMD" width="256" height="64" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <nav class="landing-links" aria-label="Community">
-    <a href="{{ config.extra.github }}">GitHub</a>
-    <a href="{{ config.extra.discord }}">Discord</a>
-  </nav>
 </body>
 </html>
