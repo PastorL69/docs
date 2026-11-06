@@ -1,0 +1,99 @@
+# ppuc.org root website: the landing page (choose PPUC Docs or PPUC/DMD) and the PPUC/DMD site under /dmd/.
+# The PPUC documentation is a separate MkDocs project (../mkdocs.yml) that is built into /docs/ of the same output.
+# Build everything with `python build.py` from the repository root.
+
+site_name: PPUC
+site_url: https://ppuc.github.io/docs/
+site_description: Pinball Power-Up Controller & DMD (PPUC) is a free and open-source pinball controller and display system.
+docs_dir: pages
+# build.py builds this project into a temporary folder and copies it into out/ next to out/docs/.
+# This site_dir is only used when running `mkdocs build -f website/mkdocs.yml` by hand.
+site_dir: ../site
+use_directory_urls: true
+strict: true
+
+theme:
+  name: null
+  custom_dir: theme
+  static_templates:
+    - 404.html
+
+plugins: []
+
+markdown_extensions:
+  - toc:
+      permalink: "#"
+      title: On this page
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+
+validation:
+  links:
+    # Links to /docs/ point into the documentation build, which this project cannot see.
+    unrecognized_links: ignore
+
+extra:
+  discord: https://discord.gg/fkkk4MbBn5
+  github: https://github.com/PPUC
+
+  # Header navigation of the PPUC/DMD site. Paths are relative to the site root.
+  dmd_nav:
+    - title: The Story
+      path: dmd/idea/
+    - title: Distributors
+      path: dmd/distributors/
+    - title: Docs
+      path: docs/
+    - title: Firmware
+      path: dmd/firmware/
+
+  # PPUC/DMD variants. `id` is what distributors list under `variants`.
+  variants:
+    - id: 128x16
+      width: 128
+      height: 16
+    - id: 128x32
+      width: 128
+      height: 32
+    - id: 192x64
+      width: 192
+      height: 64
+    - id: 256x64
+      width: 256
+      height: 64
+
+  # Certified distributors. Logos live in theme/assets/img/distributors/.
+  # `logo_bg` is the panel colour behind the logo, so each logo sits on its own background.
+  # `brand` is the name the distributor sells the official PPUC display under.
+  # `ships_worldwide: true` shows a "Ships worldwide" tag next to the region.
+  # `display` (optional) is a ZeDMD-style .raw frame (24-bit RGB, width x height x 3 bytes) shown as a
+  # dot matrix display on the distributor's card instead of the logo. The logo stays as the fallback.
+  distributors:
+    - id: janspinballmods
+      name: Jan's Pinball Mods
+      region: The Netherlands
+      ships_worldwide: true
+      url: https://janspinballmods.com
+      logo: assets/img/distributors/janspinballmods.png
+      logo_bg: "#000000"
+      brand: PPUC/DMD
+      display:
+        src: assets/dmd/ppucdmd-256x64.raw
+        width: 256
+        height: 64
+      variants: [128x32, 192x64]
+    - id: retrocity
+      name: Retrocity
+      region: Australia
+      ships_worldwide: true
+      url: https://retrocity.com
+      logo: assets/img/distributors/retrocity.png
+      logo_bg: "#000000"
+      brand: RetroDMD
+      display:
+        src: assets/dmd/retrodmd-256x64.raw
+        width: 256
+        height: 64
+      variants: [128x16, 128x32, 192x64, 256x64]

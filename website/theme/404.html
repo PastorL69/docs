@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · PPUC</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // The documentation used to live at the site root (e.g. ppuc.org/ppuc_dmd/) and now lives under /docs/.
+    // GitHub Pages serves this page for every missing URL, so forward old documentation links to their new home.
+    (function () {
+      var base = "{{ base_url }}".replace(/\/+$/, "");          // "/docs" on ppuc.github.io/docs/
+      var legacy = ["about", "assets", "github_repos", "images", "ppuc", "ppuc_dmd", "ppuc_hardware", "search", "stylesheets", "zedmd"];
+      var path = location.pathname;
+      if (path.indexOf(base + "/") !== 0) return;
+      var rest = path.slice(base.length + 1);
+      var first = rest.split("/")[0];
+      var key = first.toLowerCase();
+      if (legacy.indexOf(key) === -1) return;
+      rest = key + rest.slice(first.length);
+      location.replace(base + "/docs/" + rest + location.search + location.hash);
+    })();
+  </script>
+  <link rel="icon" type="image/png" href="{{ 'assets/img/favicon-96x96.png' | url }}" sizes="96x96">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="{{ 'assets/css/landing.css' | url }}">
+</head>
+<body class="notfound">
+  <main class="notfound-inner">
+    <img src="{{ 'assets/img/ppuc-mark.png' | url }}" alt="" width="96" height="96">
+    <h1>Tilt! Page not found.</h1>
+    <p>The page you were looking for doesn't exist, or it has moved.</p>
+    <p class="notfound-links">
+      <a href="{{ 'docs/' | url }}">PPUC Docs</a>
+      <a href="{{ 'dmd/' | url }}">PPUC/DMD</a>
+      <a href="{{ '' | url }}">ppuc.org</a>
+    </p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="wrap page">
+  <header class="page-head">
+    <p class="kicker">Where to buy</p>
+    <h1>{{ page.title }}</h1>
+    <div class="page-lead">{{ page.content }}</div>
+  </header>
+
+  <div class="distributor-grid">
+    {%- for d in config.extra.distributors %}
+    <article class="distributor-card" id="{{ d.id }}">
+      <a class="distributor-logo{% if d.display %} distributor-logo--dmd{% endif %}" href="{{ d.url }}" style="background: {{ d.logo_bg }}" rel="noopener">
+        {%- if d.display %}
+        <canvas class="dmd-canvas" data-w="{{ d.display.width }}" data-h="{{ d.display.height }}" data-src="{{ d.display.src | url }}"
+                style="aspect-ratio: {{ d.display.width }} / {{ d.display.height }}"
+                role="img" aria-label="{{ d.brand or d.name }} logo on a {{ d.display.width }} by {{ d.display.height }} dot matrix display"></canvas>
+        {%- endif %}
+        <img src="{{ d.logo | url }}" alt="{{ d.name }}" loading="lazy">
+      </a>
+      <div class="distributor-body">
+        <div class="distributor-head">
+          {%- if d.display %}
+          <a class="seller-logo seller-logo--card" href="{{ d.url }}" style="background: {{ d.logo_bg }}" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="{{ d.logo | url }}" alt="" loading="lazy">
+          </a>
+          {%- endif %}
+          <div class="distributor-id">
+            <h2>{{ d.name }}</h2>
+            <div class="distributor-tags">
+              {%- if d.ships_worldwide %}
+              <span class="region region--ships">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Ships worldwide
+              </span>
+              {%- endif %}
+            </div>
+          </div>
+        </div>
+        {%- if d.brand %}
+        <p class="distributor-brand">Distributes official PPUC displays under the <strong>{{ d.brand }}</strong> name.</p>
+        {%- endif %}
+        <p class="label">Displays offered</p>
+        <ul class="chips">
+          {%- for v in config.extra.variants if v.id in d.variants %}
+          <li class="chip">{{ v.width }}&times;{{ v.height }}</li>
+          {%- endfor %}
+        </ul>
+        <a class="btn btn--primary btn--block" href="{{ d.url }}" rel="noopener" aria-label="Visit the {{ d.name }} website">Visit website <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ 'assets/js/dmd-matrix.js' | url }}" defer></script>
+{% endblock %}

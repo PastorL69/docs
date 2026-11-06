@@ -24,7 +24,7 @@ There are multiple reasons this could happen, but whenever the ZeDMD logo shows 
 
 > **FIX 1:** Check if the ribbon cable is correctly inserted. A ribbon cable can never damage PPUC/DMD's components, so if you aren't sure, you can adjust its position without having to be afraid. Rebooting the game is a strict requirement after reseating the ribbon cable or swapping it around.  
 If that doesn't seem to solve things, we have to be sure the firmware is correctly flashed onto the Raspberry Pi Pico chip, as this one reads out the real pinball DMD signals and reports it to the Raspberry Pi.  
-See ["Updating DMDreader"](https://ppuc.github.io/docs/ppuc_dmd/#updating-dmdreader). If that does not fix the issue, have a look at the debugging steps below.
+See ["Updating DMDreader"](index.md#updating-dmdreader). If that does not fix the issue, have a look at the debugging steps below.
 
 ### Issue #3 - Debugging the Pico
 The fix from above did not seem to solve anything, so at this point logging into the Pi to gain more knowledge about what is really going on with the communication is the only way, as the Pi sort of sits in-between the Pico and the ESP32-S3, this is the only way. 

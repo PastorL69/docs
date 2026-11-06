@@ -1,6 +1,9 @@
 .vscode
 .DS_Store
 venv
+out
+site
 build
 data
 mkdocs_github_repos_plugin.egg-info
+__pycache__

@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="wrap page">
+  <header class="page-head">
+    <p class="kicker">Firmware</p>
+    <h1>{{ page.meta.heading or page.title }}</h1>
+    <div class="page-lead">{{ page.content }}</div>
+  </header>
+
+  <div class="choice-grid">
+    {%- for c in page.meta.choices %}
+    <a class="choice-card{% if c.featured %} choice-card--featured{% endif %}" href="{{ c.path | url }}">
+      {%- if c.badge %}<span class="badge">{{ c.badge }}</span>{% endif %}
+      {%- if c.image %}
+      <span class="choice-media"><img src="{{ c.image | url }}" alt="" loading="lazy"></span>
+      {%- endif %}
+      <span class="choice-body">
+        <span class="choice-title">{{ c.title }}</span>
+        {%- if c.subtitle %}<span class="choice-sub">{{ c.subtitle }}</span>{% endif %}
+        <span class="choice-text">{{ c.text }}</span>
+        {%- if c.sold_by %}<span class="choice-meta"><span class="label">Sold by</span> {{ c.sold_by }}</span>{% endif %}
+        <span class="choice-cta">{{ c.cta or 'Open guide' }} <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+    {%- endfor %}
+  </div>
+
+  {%- if page.meta.hint %}
+  <aside class="callout callout--hint">
+    <h2>Not sure which one you have?</h2>
+    <p>{{ page.meta.hint }}</p>
+  </aside>
+  {%- endif %}
+</div>
+{% endblock %}

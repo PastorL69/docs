@@ -33,13 +33,17 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Build documentation
-        run: mkdocs build --site-dir ./out
+      - name: Build website and documentation
+        # Landing page + PPUC/DMD site (website/) into ./out, the documentation into ./out/docs
+        run: python build.py
 
       - name: Verify structure
         run: |
           ls -R ./out  # Debug: Show built files
           test -f ./out/index.html || exit 1
+          test -f ./out/404.html || exit 1
+          test -f ./out/dmd/index.html || exit 1
+          test -f ./out/docs/index.html || exit 1
           # grep -q "Failed to load repository data" ./out/github_repos/index.html && exit 2
 
       - name: Deploy to GitHub Pages

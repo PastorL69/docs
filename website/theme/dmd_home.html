@@ -1,0 +1,97 @@
+{% extends "main.html" %}
+
+{% block body_class %}dmd dmd-home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <h1 class="hero-tagline">{{ page.meta.tagline }}</h1>
+    <div class="hero-lead">{{ page.content }}</div>
+    <div class="hero-actions">
+      <a class="btn btn--primary" href="{{ 'dmd/distributors/' | url }}">Find a distributor</a>
+      <a class="btn" href="{{ 'dmd/firmware/' | url }}">Get firmware</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="variants" aria-labelledby="variants-title">
+  <div class="wrap">
+    <p class="kicker">The line-up</p>
+    <h2 id="variants-title" class="section-title">Four resolutions, one platform</h2>
+    <div class="variant-grid">
+      {%- for v in config.extra.variants %}
+      <article class="variant-card" id="variant-{{ v.id }}">
+        <div class="screen">
+          <canvas class="dmd-canvas" data-w="{{ v.width }}" data-h="{{ v.height }}"
+                  style="aspect-ratio: {{ v.width }} / {{ v.height }}"
+                  role="img" aria-label="Simulated {{ v.width }} by {{ v.height }} dot matrix display"></canvas>
+        </div>
+        <div class="variant-body">
+          <h3 class="variant-name">DMD <span>{{ v.width }}&times;{{ v.height }}</span></h3>
+          <div class="variant-sellers">
+            <span class="label">Available at</span>
+            <ul class="seller-logos">
+              {%- for d in config.extra.distributors if v.id in d.variants %}
+              <li>
+                <a class="seller-logo" href="{{ 'dmd/distributors/' | url }}#{{ d.id }}" style="background: {{ d.logo_bg }}" title="{{ d.name }} ({{ d.region }})">
+                  <img src="{{ d.logo | url }}" alt="{{ d.name }}" loading="lazy">
+                </a>
+              </li>
+              {%- else %}
+              <li class="seller-none">Coming soon</li>
+              {%- endfor %}
+            </ul>
+          </div>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="how-title">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2 id="how-title" class="section-title">From monochrome to full colour</h2>
+    <ol class="flow">
+      <li>
+        <span class="flow-step">01</span>
+        <h3>Read</h3>
+        <p>PPUC/DMD taps the original display signal of your machine. No changes to the game ROM.</p>
+      </li>
+      <li>
+        <span class="flow-step">02</span>
+        <h3>Colorize</h3>
+        <p>Every frame is matched against a Serum v1 or v2 colorization and coloured in real time.</p>
+      </li>
+      <li>
+        <span class="flow-step">03</span>
+        <h3>Display</h3>
+        <p>A ZeDMD drives bright RGB LED panels that replace the original dot matrix display.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="video-title">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">See it in action</p>
+      <h2 id="video-title" class="section-title">Did you know?</h2>
+      <p class="muted">PPUC/DMD grew out of ZeDMD, the popular high-speed DMD for virtual pinball machines. In late 2024 the ZeDMD project was handed over to Markus Kalkbrenner, who turned it into a versatile solution, and serving as a key building block of PPUC/DMD.</p>
+      <div class="hero-actions hero-actions--left">
+        <a class="btn" href="{{ 'docs/ppuc_dmd/' | url }}">Read the documentation</a>
+        <a class="btn btn--ghost" href="{{ config.extra.discord }}">Join the Discord</a>
+      </div>
+    </div>
+    <a class="video-thumb" href="https://youtu.be/U_8ic-G24y4" aria-label="Watch PPUC/DMD on YouTube">
+      <img src="https://img.youtube.com/vi/U_8ic-G24y4/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+      <span class="play" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ 'assets/js/dmd-matrix.js' | url }}" defer></script>
+{% endblock %}

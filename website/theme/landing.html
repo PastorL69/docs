@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PPUC · Pinball Power-Up Controller &amp; DMD</title>
+  <meta name="description" content="{{ config.site_description }}">
+  {%- if page.canonical_url %}
+  <link rel="canonical" href="{{ page.canonical_url }}">
+  {%- endif %}
+  <meta property="og:title" content="PPUC · Pinball Power-Up Controller &amp; DMD">
+  <meta property="og:description" content="{{ config.site_description }}">
+  <meta name="theme-color" content="#ffff00">
+  <link rel="icon" type="image/png" href="{{ 'assets/img/favicon-96x96.png' | url }}" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="{{ 'assets/img/favicon.svg' | url }}">
+  <link rel="shortcut icon" href="{{ 'assets/img/favicon.ico' | url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/img/apple-touch-icon.png' | url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Orbitron:wght@700;800&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="{{ 'assets/css/landing.css' | url }}">
+</head>
+<body>
+  <h1 class="visually-hidden">PPUC: choose where to go</h1>
+  <main class="split-landing">
+    <a class="door door--ppuc" href="{{ 'docs/' | url }}">
+      <span class="door-bg" aria-hidden="true"></span>
+      <span class="door-content">
+        <span class="door-title">
+          <span class="door-word door-word--bold">PPUC</span>
+          <img class="door-logo" src="{{ 'assets/img/ppuc-mark.png' | url }}" alt="" width="140" height="140">
+          <span class="door-word">Docs</span>
+        </span>
+        <span class="door-sub">Pinball Power-Up Controller</span>
+        <span class="door-text">Open-source controllers, I/O boards and software to mod, repair and build pinball machines.</span>
+        <span class="door-cta">Read the docs <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+
+    <a class="door door--dmd" href="{{ 'dmd/' | url }}">
+      <span class="door-bg" aria-hidden="true"></span>
+      <span class="door-content">
+        <span class="door-banner-wrap">
+          <img class="door-banner" src="{{ 'assets/img/ppuc-dmd-banner-1200.jpg' | url }}"
+               srcset="{{ 'assets/img/ppuc-dmd-banner-1200.jpg' | url }} 1200w, {{ 'assets/img/ppuc-dmd-banner.jpg' | url }} 2064w"
+               sizes="(max-width: 800px) 100vw, 680px" alt="PPUC/DMD" width="1200" height="298">
+        </span>
+        <span class="door-sub">Full-colour replacement DMD</span>
+        <span class="door-text">Run Serum colorizations in the best way possible on your virtual or real pinball machine.</span>
+        <span class="door-cta">Go to PPUC/DMD <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+  </main>
+
+  <nav class="landing-links" aria-label="Community">
+    <a href="{{ config.extra.github }}">GitHub</a>
+    <a href="{{ config.extra.discord }}">Discord</a>
+  </nav>
+</body>
+</html>
