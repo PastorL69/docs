@@ -56,9 +56,13 @@
         </ul>
         {%- if spec.virtual %}
         <div class="spec-group">
-          <ul class="spec-tags spec-tags--virtual">
-            {%- for item in spec.virtual %}<li>{{ item }}</li>{% endfor %}
-          </ul>
+          {#- One big "Visual Pinball" tag with the virtual platforms nested inside it #}
+          <div class="spec-cluster">
+            <span class="spec-cluster-name">{{ spec.virtual_label or "Visual Pinball" }}</span>
+            <ul class="spec-tags spec-tags--virtual">
+              {%- for item in spec.virtual %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+          </div>
         </div>
         {%- endif %}
         {%- endif %}

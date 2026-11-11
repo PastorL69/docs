@@ -15,23 +15,23 @@ specs:
     note: On all devices
     text: Released in 2025 by Raspberry Pi, with dual Arm Cortex-M33 cores at 266 MHz.
   - image: assets/img/specs/pi-zero-2w.webp
-    stat: Zero 2 W
+    stat: Pi Zero 2W
     note: Optional
-    text: Only required to run Serum colorizations on real pinball machines.
+    text: Plugs into the 40-pin header, enabling Serum colorizations on real machines.
   - art: gamma
     stat: Superb colour depth
     note: 10-bit gamma correction
-    text: Keeps even near-identical colours clearly apart.
+    text: Keeps even near-identical colours clearly apart, for smooth, rich gradients.
   - image: assets/img/specs/refresh.webp
     stat: High refresh rate
-    note: Rock-steady performance
+    note: Rock-solid performance
     text: Low frame response times and no visible flicker, even on HD displays.
   - image: assets/img/specs/dmd.webp
     stat: 15 Supported systems
     note: 13 Real pinball systems
     list: [WPC & WPC95, Data East, Sega, Stern Whitestar, Stern SAM, Stern SPIKE 1, Capcom, Gottlieb/Premier,
            Alvin G. & Co, Homepin, Spinball, Sleic/Petaco, Dotmation, {name: Spooky, soon: true}]
-    virtual: [Visual Pinball, Batocera]
+    virtual: [DMDExt, Batocera]
 ---
 Revive your pinball machine with PPUC/DMD, a drop-in replacement for the original dot matrix display.<br>
-Want full colour? Just enable Serum, the PPUC-developed colorization format.
+Want full colour? Use Serum, the PPUC-developed colorization format.

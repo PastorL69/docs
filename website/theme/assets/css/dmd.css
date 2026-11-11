@@ -444,7 +444,21 @@ a:hover { color: var(--cyan-soft); }
 /* Virtual pinball platforms: their own group below a thin divider, in cyan-tinted tags */
 .spec-group { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .spec-group .spec-tags { margin: 0; }
-.spec-tags--virtual li { color: var(--cyan-soft); background: rgba(62, 232, 255, 0.1); border-color: var(--line-strong); }
+.spec-cluster {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 4px 4px 4px 12px;
+  font-size: 0.78rem;
+  color: var(--text);
+  background: rgba(62, 232, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.spec-cluster-name { white-space: nowrap; }
+.spec-tags--virtual { gap: 4px; }
+
 .spec-body { min-width: 0; }
 
 /* Square picture tile: a photo, or a CSS illustration */
