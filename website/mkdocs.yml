@@ -50,6 +50,8 @@ extra:
       path: dmd/firmware/
 
   # PPUC/DMD variants. `id` is what distributors list under `variants`.
+  # `src` (optional) is a ZeDMD-style .raw frame (24-bit RGB, width x height x 3 bytes) shown on the
+  # variant's simulated display instead of the "PPUC/DMD WxH" text.
   variants:
     - id: 128x16
       width: 128
@@ -60,6 +62,7 @@ extra:
     - id: 192x64
       width: 192
       height: 64
+      src: assets/dmd/ppucdmd-192x64.raw
     - id: 256x64
       width: 256
       height: 64

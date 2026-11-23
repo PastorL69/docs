@@ -83,7 +83,7 @@
       {%- for v in config.extra.variants %}
       <article class="variant-card" id="variant-{{ v.id }}">
         <div class="screen">
-          <canvas class="dmd-canvas" data-w="{{ v.width }}" data-h="{{ v.height }}"
+          <canvas class="dmd-canvas" data-w="{{ v.width }}" data-h="{{ v.height }}"{% if v.src %} data-src="{{ v.src | url }}"{% endif %}
                   style="aspect-ratio: {{ v.width }} / {{ v.height }}"
                   role="img" aria-label="Simulated {{ v.width }} by {{ v.height }} dot matrix display"></canvas>
         </div>
